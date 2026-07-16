@@ -1,0 +1,23 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function validUserUpload() {
+      return request.resource != null
+        && request.resource.size < 25 * 1024 * 1024;
+    }
+
+    match /user_assets/{userId}/{allPaths=**} {
+      allow read: if isOwner(userId);
+      allow create, update: if isOwner(userId) && validUserUpload();
+      allow delete: if isOwner(userId);
+    }
+  }
+}
