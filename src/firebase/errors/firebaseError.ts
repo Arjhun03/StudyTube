@@ -7,6 +7,7 @@ const authMessages: Record<string, string> = {
   'auth/wrong-password': 'Invalid email or password.',
   'auth/weak-password': 'Password must be at least 6 characters.',
   'auth/popup-closed-by-user': 'Google sign-in was closed before it finished.',
+  'auth/unauthorized-domain': `This domain is not authorized for Firebase Authentication. Add ${globalThis.location?.hostname ?? 'this site'} to Firebase Console > Authentication > Settings > Authorized domains.`,
   'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.',
   'auth/network-request-failed': 'Network error. Check your connection and try again.',
   'auth/requires-recent-login': 'Please sign in again before making this change.',

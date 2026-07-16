@@ -25,6 +25,20 @@ VITE_FIREBASE_APP_ID=
 
 Implemented Firebase features include email/password auth, Google sign-in, password reset, email verification, local session persistence, Firestore user profile creation, real-time study-session listeners, offline Firestore persistence, Storage uploads, typed error handling, and reusable loading states.
 
+### Fix `auth/unauthorized-domain`
+
+Firebase Authentication only works from domains listed in the Firebase console. For this project, open Firebase Console for `studytube-33d08`, then go to **Authentication > Settings > Authorized domains** and add the host you are using to run the app.
+
+Common hosts for this app:
+
+- `localhost` for `npm run dev`
+- `127.0.0.1` if you open Vite with the numeric loopback address
+- `studytube-33d08.firebaseapp.com` for Firebase Hosting
+- `studytube-33d08.web.app` for Firebase Hosting
+- Your deployed custom domain, for example a Vercel, Netlify, or custom HTTPS domain
+
+Firebase authorizes domains by host, so do not include `http://`, `https://`, paths, or ports when adding entries.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
